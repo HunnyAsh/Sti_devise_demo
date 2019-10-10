@@ -1,0 +1,36 @@
+<h1>Dashboard#index</h1>
+
+<h3>List Admins</h3>
+<table>
+  <thead>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>List Users</h3>
+<table>
+  <thead>
+    <th>Email</th>
+    <th>Type</th>
+    <th colspan="2">Actions</th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.type %></td>
+        <td><%= link_to 'Edit', edit_user_registration_path%></td>
+        <td><%= link_to 'Delete', user_registration_path,:confirm => 'Are you sure you want to destroy your account?', method: :delete %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Sign Out', destroy_admin_session_path, method: :delete %>
